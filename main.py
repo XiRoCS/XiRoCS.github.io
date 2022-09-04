@@ -1,14 +1,13 @@
 import requests
 from flask import Flask, request,render_template
+from flask_frozen import Freezer
 
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    query = request.url
-    with open ('url.txt', 'w') as file:
-        file.write(query)
-    return render_template('index.html')
+def index():
+    return render_template('test.html')
 
-app.run()
+freezer = Freezer(app)
+freezer.freeze()
